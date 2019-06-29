@@ -14,21 +14,16 @@ module.exports = function(app){
 			friendDifference: 1000
 		};
 
-		console.log(req.body);
-
 		//we take the result from the user's survey then we POST and parse it
 		var userData = req.body;
 		var userScores = userData.scores;
-
-		console.log(userScores);
 
 		//we use this variable to calculate the difference between the user's scores and the scores of each potential friend in the database.
 		var totalDifference = 0;
 
 		//we loop through all the potential friends in the database
 		for(var i = 0; i<friends.length; i++){
-			console.log(friends[i]);
-			totalDifference = 0;
+			// console.log(friends[i]);
 
 			//then we loop through all the scores of the potential friends
 			for(var j = 0; j < friends.length; j++){
@@ -42,8 +37,10 @@ module.exports = function(app){
 					bestMatch.friendDifference = totalDifference;
 
 				}
+
 			}
 		}
+		res.json(bestMatch);
 
 		//save the user's data into the database
 		friends.push(userData);

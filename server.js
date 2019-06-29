@@ -4,7 +4,7 @@ var app = express();
 var bodyParser = require('body-parser') //Parse incoming request bodies in a middleware before your handlers, available under the req.body property. 
 										//This body-parser module parses the JSON, buffer, string and URL encoded data submitted using HTTP POST request.
 
-var PORT = process.env.PORT || 3000; // let the port be set by heroku or use port 3000
+var PORT = process.env.PORT || 3001; // let the port be set by heroku or use port 3000
  
 // create application/json parser. bodyParser.json returns middleware that only parses json
 // var jsonParser = bodyParser.json()
@@ -13,7 +13,7 @@ var PORT = process.env.PORT || 3000; // let the port be set by heroku or use por
 app.use(bodyParser.urlencoded({ extended: true })) //Returns middleware that only parses urlencoded bodies
  
 // parse various different custom JSON types as JSON
-app.use(bodyParser.json({ type: 'application/*+json' }))
+// app.use(bodyParser.json({ type: 'application/*+json' }))
  
 // parse some custom thing into a Buffer
 app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }))
@@ -30,3 +30,13 @@ app.listen(PORT, function(){
 
 
 })
+
+
+
+
+
+
+
+
+
+
